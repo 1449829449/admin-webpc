@@ -6,6 +6,8 @@
     "dev": "vue-cli-service serve --mode dev",
     "build:test": "vue-cli-service build --mode test",
     "build:prod": "vue-cli-service build --mode prod",
+    "new:comp": "node ./scripts/generateComponent",
+    "new:view": "node ./scripts/generateView",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
