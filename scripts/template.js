@@ -18,7 +18,7 @@ export default {
   methods: {}
 }
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .${compoenntName} {
 
 }

@@ -7,19 +7,28 @@
     <el-button type="warning">警告按钮</el-button>
     <el-button type="danger">危险按钮</el-button>
     <svg-icon icon-class="jinxingzhong"></svg-icon>
+    <div class="login-btn" v-permission="true">6666</div>
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
+import { login } from '../api/login'
 
 export default {
   name: 'Home',
   // components: {
   //   HelloWorld
   // }
+  async mounted() {
+    try {
+      let a = await login()
+      console.log(a)
+    } catch (error) {
+      console.log(error)
+    }
+  },
 }
 </script>

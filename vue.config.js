@@ -6,6 +6,20 @@ function resolve(dir) {
 
 module.exports = {
   publicPath: process.env.VUE_APP_ENV === 'prod' ? 'CDN' : '', // 打包路径
+  // vue.config.js
+  devServer: {
+    proxy: {
+      [process.env.VUE_APP_BASE_URL]: {
+        target: process.env.VUE_APP_BASE_HTTP, // 后台接口域名
+        ws: true, // 如果要代理 websockets，配置这个参数
+        secure: false, // 如果是https接口，需要配置这个参数
+        changeOrigin: true, // 是否跨域
+        // pathRewrite: {
+        //   "^/hmb-admin-base": "/hmb-admin-base",
+        // },
+      },
+    },
+  },
   // sass 写法
   css: {
     loaderOptions: {
@@ -35,10 +49,9 @@ module.exports = {
         symbolId: 'icon-[name]',
       })
       .end()
-      // 压缩svg图片
-      .use('svgo-loader')
-      .loader('svgo-loader')
-      .end()
-      
+    // 压缩svg图片
+    // .use('svgo-loader')
+    // .loader('svgo-loader')
+    // .end()
   },
 }
