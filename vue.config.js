@@ -1,11 +1,31 @@
 const path = require('path')
 const WebpackBundleAnalyzer = require('webpack-bundle-analyzer')
+const CompressionPlugin = require('compression-webpack-plugin');
 function resolve(dir) {
   return path.join(__dirname, './', dir)
 }
+// 那些资源不打包
+const externals = {
+  vue: 'Vue',
+  'vue-router': 'VueRouter',
+  vuex: 'Vuex'
+}
+// CDN资源
+const cdn = {
+  js: [
+    // vue
+    '//cdn.staticfile.org/vue/2.5.22/vue.min.js',
+    // vue-router
+    '//cdn.staticfile.org/vue-router/3.0.2/vue-router.min.js',
+    // vuex
+    '//cdn.staticfile.org/vuex/3.1.0/vuex.min.js'
+  ]
+}
+
 
 module.exports = {
   publicPath: process.env.VUE_APP_ENV === 'prod' ? 'CDN' : '', // 打包路径
+  productionSourceMap: process.env.VUE_APP_ENV !== 'prod', // 是否关闭map（可查看源码）
   // vue.config.js
   devServer: {
     proxy: {
@@ -27,6 +47,11 @@ module.exports = {
         prependData: `@import '@/styles/global.scss';`,
       },
     },
+  },
+  configureWebpack: {
+    plugins: [
+      require('unplugin-vue-components/webpack')({ /* options */ }),
+    ],
   },
   chainWebpack: (config) => {
     if (process.env.use_analyzer) {
@@ -53,5 +78,41 @@ module.exports = {
     // .use('svgo-loader')
     // .loader('svgo-loader')
     // .end()
+
+    // zip压缩
+    config.when(process.env.VUE_APP_ENV === 'prod', () => {
+      config.plugin('CompressionPlugin').use(CompressionPlugin, [{ deleteOriginalAssets: true }]);
+    });
+
+    // 图片压缩
+    config.module
+    .rule('images')
+    .test(/\.(png|jpe?g|gif|svg)(\?.*)?$/)
+    .use('image-webpack-loader')
+      .loader('image-webpack-loader')
+      .options({
+        bypassOnDebug: true
+      })
+      .end()
+    // CDN引入
+    config.externals(externals)
+    config.plugin('html').tap(args => {
+      args[0].cdn = cdn
+      return args
+    })
   },
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

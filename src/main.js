@@ -9,6 +9,13 @@ import "./icons";
 import Directives from "./libs/directives";
 Vue.use(Directives);
 
+// ◆导入
+import * as filters from "./libs/filter";
+// ◆循环注册过滤器里面的函数
+Object.keys(filters).forEach((key) => {
+  Vue.filter(key, filters[key]);
+});
+
 Vue.config.productionTip = false
 process.env.VUE_APP_ENV !== 'prod' && require('../mock')
 

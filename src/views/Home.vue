@@ -8,7 +8,8 @@
     <el-button type="danger">危险按钮</el-button>
     <svg-icon icon-class="jinxingzhong"></svg-icon>
     <div class="login-btn" v-permission="true">6666</div>
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    {{ 100 | gold}}
   </div>
 </template>
 
@@ -23,6 +24,7 @@ export default {
   //   HelloWorld
   // }
   async mounted() {
+    console.log(this.$store.state.modulA.name)
     try {
       let a = await login()
       console.log(a)
