@@ -6,7 +6,7 @@ Vue.use(Vuex);
 //多模块引入简写
 let ms = require.context("./modules", false, /\.js$/);
 let modules = {};
-debugger;
+
 ms.keys().forEach((k) => {
   let n = k.substring(2, k.length - 3);
   modules[n] = ms(k).default;

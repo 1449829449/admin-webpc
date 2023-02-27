@@ -16,7 +16,7 @@ const routes = (ms.keys().map((item) => ms(item).default || [])).flat(2);
 
 Vue.use(VueRouter);
 const router = new VueRouter({
-  mode: 'history',
+  // mode: 'history',
   base: process.env.BASE_URL,
   routes,
 });
