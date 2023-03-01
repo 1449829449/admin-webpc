@@ -28,10 +28,12 @@ log('请输入要生成的页面组件名称、会生成在 views/目录下')
 let componentName = ''
 process.stdin.on('data', async chunk => {
   const inputName = String(chunk).trim().toString()
+
+  const component = resolve('../src/views', inputName)
   /**
    * Vue页面组件路径
    */
-  let componentVueName = resolve('../src/views', inputName)
+  let componentVueName = resolve(component, 'index.vue')
   // 如果不是以 .vue 结尾的话，自动加上
   if (!componentVueName.endsWith('.vue')) {
     componentVueName += '.vue'
