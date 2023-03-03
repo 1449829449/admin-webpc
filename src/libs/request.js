@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Message } from 'element-ui' // 引用element-ui的加载和消息提示组件
 
 // 创建 axios 实例
 const request = axios.create({
@@ -34,7 +35,7 @@ request.interceptors.request.use((config) => {
   // 如果 token 存在
   // 让每个请求携带自定义 token 请根据实际情况自行修改
   // eslint-disable-next-line no-param-reassign
-  config.headers.Authorization = `bearer ${localStorage.getItem('ACCESS_TOKEN')}`;
+  config.headers.Authorization = `${localStorage.getItem('ACCESS_TOKEN')}`;
   return config;
 }, errorHandler);
 
@@ -43,6 +44,7 @@ request.interceptors.response.use((response) => {
   const dataAxios = response.data;
   // 这个状态码是和后端约定的
   const { code } = dataAxios;
+  console.log(code)
   // 根据 code 进行判断
   if (code === undefined) {
     // 如果没有 code 代表这不是项目后端开发的接口
@@ -51,15 +53,16 @@ request.interceptors.response.use((response) => {
   } else {
     // 有 code 代表这是一个后端接口 可以进行进一步的判断
     switch (code) {
-      case 200:
+      case '200':
         // [ 示例 ] code === 200 代表没有错误
         return dataAxios.data;
       case 'xxx':
         // [ 示例 ] 其它和后台约定的 code
         return 'xxx';
       default:
+        Message.error(dataAxios.message)
         // 不是正确的 code
-        return '不是正确的code';
+        return dataAxios;
     }
   }
 }, errorHandler);

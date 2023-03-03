@@ -10,7 +10,7 @@ module.exports = {
         const contentWithoutStyleBlocks = content.replace(/<style[^]+?<\/style>/gi, '')
         return contentWithoutStyleBlocks.match(/[A-Za-z0-9-_/:]*[A-Za-z0-9-_/]+/g) || []
       },
-      safelist: [/^el/], // 指明哪些选择器可以安全地被保留在最终的 CSS 中
+      safelist: [/^el || ^font/], // 指明哪些选择器可以安全地被保留在最终的 CSS 中
     }),
   ]
 };

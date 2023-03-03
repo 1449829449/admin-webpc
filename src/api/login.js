@@ -1,10 +1,10 @@
 // 引入request
 import request from '../libs/request';
 
-export function login(data) {
+export function login(params) {
   return request({
-    url: '/example/uesr',
-    method: 'get',
-    data,
+    url: '/api/login',
+    method: 'GET',
+    params,
   });
 }
