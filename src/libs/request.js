@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { Message } from 'element-ui' // 引用element-ui的加载和消息提示组件
+import cookie from 'js-cookie'
+import store from '@/store';
 
 // 创建 axios 实例
 const request = axios.create({
@@ -35,7 +37,8 @@ request.interceptors.request.use((config) => {
   // 如果 token 存在
   // 让每个请求携带自定义 token 请根据实际情况自行修改
   // eslint-disable-next-line no-param-reassign
-  config.headers.Authorization = `${localStorage.getItem('ACCESS_TOKEN')}`;
+  config.headers['Authorization-token'] = `${cookie.get('token')}`;
+  config.headers['user_id'] = `${cookie.get('user_id')}`;
   return config;
 }, errorHandler);
 
@@ -55,8 +58,9 @@ request.interceptors.response.use((response) => {
     switch (code) {
       case '200':
         // [ 示例 ] code === 200 代表没有错误
-        return dataAxios.data;
-      case 'xxx':
+        return dataAxios;
+      case '403':
+        store.dispatch('login/logOut')
         // [ 示例 ] 其它和后台约定的 code
         return 'xxx';
       default:

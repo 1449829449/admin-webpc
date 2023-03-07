@@ -7,7 +7,7 @@ import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 // permissions
 // import store from '@/store';
-import storage from 'store';
+import cookie from 'js-cookie'
 
 // 模块引入
 /* Router Modules */
@@ -28,7 +28,7 @@ const router = new VueRouter({
 router.beforeEach(async (to, from, next) => {
   // 进度条
   NProgress.start();
-  const token = storage.get('ACCESS_TOKEN');
+  const token = cookie.get('token');
   if(token && token !== 'undefined') {
     if(to.path === '/login'){
       next(false)
@@ -58,10 +58,10 @@ router.afterEach((to) => {
 });
 
 // 解决重复点击路由报错
-const originalPush = VueRouter.prototype.push;
-VueRouter.prototype.push = function push(location) {
-  return originalPush.call(this, location).catch((err) => err);
-};
+// const originalPush = VueRouter.prototype.push;
+// VueRouter.prototype.push = function push(location) {
+//   return originalPush.call(this, location).catch((err) => err);
+// };
 
 // 解决重复点击路由报错
 const originalReplace = VueRouter.prototype.replace;

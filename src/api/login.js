@@ -8,3 +8,11 @@ export function login(params) {
     params,
   });
 }
+//修改密码
+export function editPassword(params){
+  return request({
+    url: '/user/password/update',
+    method: 'POST',
+    params
+  })
+}

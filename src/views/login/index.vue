@@ -51,8 +51,10 @@ export default {
       this.$refs.ruleForm.validate(valid => {
         if (valid) {
           this.$store.dispatch('login/toLogin',this.ruleForm).then(()=>{
-              this.$router.push(this.$route.query.redirect || 'home')
-          }).catch(()=>{})
+            this.$router.push(this.$route.query.redirect || 'home')
+          }).catch((err)=>{
+            console.log(err)
+          })
         }
       })
     }

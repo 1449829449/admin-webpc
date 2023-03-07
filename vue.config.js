@@ -63,6 +63,7 @@ module.exports = {
     }
     // vue.config.js svg 图标进行自动注册
     config.module.rule('svg').exclude.add(resolve('src/icons')).end()
+    
     config.module
       .rule('icons')
       .test(/\.svg$/)
@@ -87,7 +88,7 @@ module.exports = {
     // 图片压缩
     config.module
     .rule('images')
-    .test(/\.(png|jpe?g|gif|svg)(\?.*)?$/)
+    .test(/\.(png|jpe?g|gif)(\?.*)?$/)
     .use('image-webpack-loader')
       .loader('image-webpack-loader')
       .options({
