@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import getPageTitle from '@/libs/get-page-title';
 
+
 // 进度条
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
