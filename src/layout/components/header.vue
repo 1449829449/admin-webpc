@@ -6,9 +6,9 @@
       
       <!-- 面包屑导航 -->
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-        <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+        <el-breadcrumb-item v-for="(item, index) in breadList" :key="index">
+          {{ item.meta.title }}
+        </el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="headr_d2">
@@ -72,6 +72,7 @@ export default {
     return {
       name: cookie.get('ms_name'),
       dialogFormVisible: false,
+      breadList: [],
       opened: false,
       ruleForm: {
         oldPass: '',
@@ -86,6 +87,19 @@ export default {
         newPass: [{ required: true, message: '新密码', trigger: 'blur' }],
         passTwo: [{ required: true, message: '确认密码', trigger: 'blur' }],
       },
+    }
+  },
+  watch: {
+    $route: {
+      handler(route){
+        let allList = route.matched.filter( item =>{
+          if(item.meta.title){
+            return true
+          }
+        })
+        this.breadList = allList
+      },
+      immediate: true
     }
   },
   methods: {

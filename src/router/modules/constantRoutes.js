@@ -1,6 +1,7 @@
 /* Layout */
 import Layout from '@/layout'
-// 静态路由
+
+// 静态路由,不会添加到导航栏
 export default [
   { path: '/', redirect: '/home'},
   {
@@ -16,7 +17,6 @@ export default [
     component: Layout,
     redirect: '/home',
     name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
     children: [
       {
         path: "home",
@@ -25,20 +25,7 @@ export default [
         meta: {
           title: "首页"
         },
-      },
-      {
-        path: "about",
-        name: "About",
-        component: () => import("@/views/About.vue"),
-        meta: {
-          title: "参保查询"
-        },
-      },
+      }
     ]
-  },
-  {
-    path: '*',
-    name: '404',
-    component:() => import('@/views/error/index.vue')
   }
 ];

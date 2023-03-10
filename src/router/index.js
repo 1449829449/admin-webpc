@@ -1,25 +1,24 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import getPageTitle from '@/libs/get-page-title';
+// 静态路由
 
-
+import asyncRoutes from './modules/asyncRoutes';
+import constantRoutes from './modules/constantRoutes';
 // 进度条
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 // permissions
-// import store from '@/store';
+import store from '@/store';
 import cookie from 'js-cookie'
 
-// 模块引入
-/* Router Modules */
-const ms = require.context('./modules', false, /\.js$/);
-const routes = (ms.keys().map((item) => ms(item).default || [])).flat(2);
+
 
 Vue.use(VueRouter);
 const router = new VueRouter({
   // mode: 'history',
+  routes: constantRoutes,
   base: process.env.BASE_URL,
-  routes,
 });
 
 /**
@@ -34,8 +33,19 @@ router.beforeEach(async (to, from, next) => {
     if(to.path === '/login'){
       next(false)
       NProgress.done();
-    }else{
-      next()
+    } else {
+      const hasRoles = store.state.app.addRoutes.length  > 0
+      if (hasRoles) {
+        console.log(store.state.app.addRoutes,'================wwwwww')
+        next()
+      } else {
+        const addRou = await store.dispatch('app/getAsyncRoutes', asyncRoutes)
+        router.addRoutes(addRou)
+        // alert(store.state.app.addRoutes.length)
+        // hack method to ensure that addRoutes is complete
+        // set the replace: true, so the navigation will not leave a history record
+        next({ ...to, replace: true })
+      }
     }
   } else {
     if (to.path === '/login') {
