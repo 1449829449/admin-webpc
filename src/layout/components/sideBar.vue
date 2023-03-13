@@ -5,13 +5,13 @@
     </div>
     <el-scrollbar>
       <el-menu
-        default-active="2"
+        :default-active="activeMenu"
         :collapse="opened"
         :collapse-transition="false"
         background-color="#3a3f51"
         text-color="#fff"
         router
-        active-text-color="#ffd04b"
+        active-text-color="rgb(79, 148, 212)"
       >
         <div v-for="item in list" :key="item.path">
           <!-- 没有子路由的情况下 -->
@@ -22,14 +22,13 @@
           <!-- 只有一个子路由的情况下 -->
           <el-menu-item
             v-else-if="item.children.length === 1"
-            :index="ckpath(item.path, item.children[0].path)"
+            :index="item.children[0].path"
           >
             <i class="el-icon-menu"></i>
             <span slot="title">{{ item.children[0].meta.title }}</span>
           </el-menu-item>
-
           <!-- 多个子路由 -->
-          <el-submenu v-else>
+          <el-submenu v-else :index="item.path">
             <template slot="title">
               <i class="el-icon-location"></i>
               <span>{{ item.meta.title }}</span>
@@ -37,7 +36,7 @@
             <el-menu-item
               v-for="child in item.children"
               :key="child.path"
-              :index="ckpath(item.path, child.path)"
+              :index="child.path"
               >{{ child.meta.title }}</el-menu-item
             >
           </el-submenu>
@@ -49,7 +48,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import asyncRoutes from '@/router/modules/asyncRoutes'
 
 export default {
   data() {
@@ -60,14 +58,20 @@ export default {
   },
   computed: {
     ...mapState('app', ['opened']),
+    ...mapState('login', ['addRoutes']),
+    activeMenu() {
+      const { path } = this.$route
+      return path
+    },
   },
   mounted() {
-    this.list = this.deepFilter(asyncRoutes)
-    console.log(this.list)
+    // console.log(this.addRoutes,'=====55555555')
+    this.list = this.deepFilter(this.addRoutes)
+  
   },
   methods: {
     ckpath(a, b) {
-      return `${a}/${b}`
+      return a + b
     },
     deepFilter(list) {
       // 使用filter 过滤当前层的数组

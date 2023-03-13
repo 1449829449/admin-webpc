@@ -36,5 +36,6 @@ export default {
   .header_l span{
     display: none;
   }
+  .el-submenu__title span{ display: none;}
 }
 </style>

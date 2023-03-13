@@ -1,15 +1,15 @@
 <template>
-  <div class="rolemanage">
+  <div class="usermanagement">
     角色管理组件
   </div>
 </template>
 <script>
 export default {
-  name: 'rolemanage',
+  name: 'usermanagement',
   props: {},
   data () {
     return {
-      name: 'rolemanage'
+      name: 'usermanagement'
     }
   },
   mounted () {},
@@ -17,7 +17,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.rolemanage {
+.usermanagement {
 
 }
 </style>

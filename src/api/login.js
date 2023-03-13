@@ -16,3 +16,11 @@ export function editPassword(params){
     params
   })
 }
+//获取动态路由列表
+export function addRoute(params){
+  return request({
+    url:'/role/tree',
+    method:'GET',
+    params
+  })
+}

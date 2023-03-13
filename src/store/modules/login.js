@@ -1,11 +1,15 @@
 import { login, editPassword } from '@/api/login'
+import { addRoute } from '@/api/login'
+import { forSearchArr } from "@/libs/frameway"
 import cookie from 'js-cookie'
 import router from '@/router'
+
 const loginx = {
   namespaced: true,
   state: {
     token:'',
-    userInfo: {}
+    userInfo: {},
+    addRoutes: []
   },
   getters: {},
   mutations: {
@@ -14,14 +18,17 @@ const loginx = {
     },
     userInfo:(state,value)=>{
       state.userInfo = value
+    },
+    SET_ROUTES(state, value) {
+      state.addRoutes = value
     }
   },
   actions: {
+    // 登陆
     toLogin({commit}, info){
       return new Promise((resolve, reject) => {
         login(info).then((res) => {
           if(res.code === '200'){
-            console.log(res)
             commit('token', res.data)
             commit('userInfo', {ms_name:info.name, user_id:res.message})
             cookie.set('ms_name', info.name)
@@ -34,14 +41,27 @@ const loginx = {
         })
       })
     },
+    // 获取权限
+    getAsyncRoutes({ commit}, value) {
+      return new Promise((resolve, reject) => {
+        addRoute().then( res => {
+          let routes = [...forSearchArr(res.data.children,'1'),...value]
+          commit('SET_ROUTES', routes)
+          resolve(routes)
+        }).catch(err =>{
+          reject(err)
+        })
+      })
+    },
     // 退出登录
     logOut({ commit }) {
-      commit('token', '')
+      commit('ACCESS_TOKEN', '')
       commit('userInfo', {})
+      commit('SET_ROUTES',[])
       cookie.remove('token')
       cookie.remove('ms_name')
       cookie.remove('user_id')
-      router.push('login')
+      router.push('/login')
     },
     // 重置密码
     czCode({commit}, info){
@@ -49,6 +69,7 @@ const loginx = {
         editPassword(info).then((res)=>{
           commit('ACCESS_TOKEN', '')
           commit('userInfo', '')
+          commit('SET_ROUTES',[])
           cookie.remove('token')
           cookie.remove('ms_name')
           cookie.remove('user_id')

@@ -34,14 +34,13 @@ router.beforeEach(async (to, from, next) => {
       next(false)
       NProgress.done();
     } else {
-      const hasRoles = store.state.app.addRoutes.length  > 0
+      const hasRoles = store.state.login.addRoutes.length  > 0
       if (hasRoles) {
-        console.log(store.state.app.addRoutes,'================wwwwww')
         next()
       } else {
-        const addRou = await store.dispatch('app/getAsyncRoutes', asyncRoutes)
+        // debugger
+        const addRou = await store.dispatch('login/getAsyncRoutes', asyncRoutes)
         router.addRoutes(addRou)
-        // alert(store.state.app.addRoutes.length)
         // hack method to ensure that addRoutes is complete
         // set the replace: true, so the navigation will not leave a history record
         next({ ...to, replace: true })
