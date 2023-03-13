@@ -6,6 +6,8 @@
     <meta name="description" content="网页描述文字">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <!-- <meta http-equiv="content-security-policy" content="script-src 'self' 'unsafe-eval' cdn.staticfile.org;style-src 'self' 'unsafe-inline';object-src 'none'"> -->
+
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
     <% for(var js of htmlWebpackPlugin.options.cdn.js) { %>

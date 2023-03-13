@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <header class="header">
-      <img src="@/assets/framework/logo.png">慢病网络服务中心
+      <img src="@/assets/framework/logo.png" alt="基础架构" >慢病网络服务中心
     </header>
     <div class="login_center">
       <img src="@/assets/framework/login.png">

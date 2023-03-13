@@ -21,7 +21,7 @@
         <li class="domPersonal">
           <el-dropdown @command="handleCommand" placement="bottom-end">
             <div class="el-dropdown-link">
-              <span>{{ name }}</span> <img src="@/assets/framework/logo.png" />
+              <span>{{ name }}</span> <img src="@/assets/framework/logo.png" alt="用户头像" />
             </div>
 
             <el-dropdown-menu slot="dropdown">

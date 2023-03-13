@@ -1,7 +1,7 @@
 <template>
   <div class="sideBar" id="domSideBar">
     <div class="header_l">
-      <img src="@/assets/framework/logo.png" /> <span>基础架构</span>
+      <img src="@/assets/framework/logo.png" alt="基础架构" /> <span>基础架构</span>
     </div>
     <el-scrollbar>
       <el-menu
