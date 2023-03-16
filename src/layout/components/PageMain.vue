@@ -7,8 +7,11 @@
 </template>
 <style lang="scss" scoped>
 .app_main{
-  padding: 20px;
+  padding: 15px;
+  width: calc(100% - 230px);
   background-color: #f0f3f4;
   min-height: calc(100vh - 90px);
+  margin-left: 200px;
+  text-align: left;
 }
 </style>

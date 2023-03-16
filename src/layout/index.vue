@@ -36,6 +36,10 @@ export default {
   .header_l span{
     display: none;
   }
+  .app_main{ 
+    width: calc(100% - 90px);
+    margin-left: 60px;
+   }
   .el-submenu__title span{ display: none;}
 }
 </style>
