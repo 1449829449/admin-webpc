@@ -7,7 +7,7 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">查询</el-button>
-        <el-button type="primary" @click="resetForm">重置</el-button>
+        <el-button type="primary" @click="resetForm('ruleForm')">重置</el-button>
         <el-button type="primary" @click="adduser">新增用户</el-button>
       </el-form-item>
     </el-form>
@@ -50,7 +50,7 @@
         style="padding:0 10px;"
         :wrapper-closable="false"
         :title="stateVal==='0' ? '修改' : '添加'"
-        @close="ckclose"
+        @close="resetForm('drawerform')"
         :visible.sync="dialogFormVisible"
       >
       <div class="drewWrap">
@@ -96,20 +96,23 @@
 <script>
 import { stemUser, roleList, uploadUser, addUser } from '@/api/systemrun'
 import { Objectbemixed, Objectclear } from '@/utils/tools' // 工具函数库
+import tables from '@/mixins/table'
 
 export default {
   name: 'rolemanage',
+  mixins: [tables],
   props: {},
   data() {
     return {
+      //table查询属性 
       formInline: {
         phone: '',
         pageNo: 1,
         pageSize: 10,
       },
       tableData: [],
-      total: 0,
       rules: {},
+      // 弹框属性
       dialogFormVisible: false,
       form:{
         phone:'',
@@ -148,27 +151,12 @@ export default {
     await this.getList()
     const { data } = await roleList()
     this.selectData = data
-    console.log(data,'3')
   },
   methods: {
     async getList(){
       const { data } = await stemUser(this.formInline)
       this.tableData = data.records
       this.total = data.total
-    },
-    onSubmit() {
-      this.getList()
-    },
-    resetForm() {
-      this.$refs.ruleForm.resetFields();
-    },
-    handleSizeChange(val) {
-      this.formInline.pageSize = val
-      this.getList()
-    },
-    handleCurrentChange(val){
-      this.formInline.pageNo = val
-      this.getList()
     },
     submitFn(){
       this.$refs.drawerform.validate(async(valid) => {
@@ -184,9 +172,6 @@ export default {
         }
       });
     },
-    ckclose(){
-      this.$refs.drawerform.resetFields();
-    },
     adduser(){
       this.stateVal = '1'
       this.dialogFormVisible = true
@@ -201,10 +186,7 @@ export default {
       this.form = Objectbemixed(this.form,scope)
       this.form.roleId = this.form.roleId.split(',')
     },
-  },
-
-
-  
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -212,35 +194,6 @@ export default {
   background: #fff;
   border-radius: 2px;
   padding: 20px;
-}
-.addCont /deep/.el-drawer__header{
-  padding: 15px 0 15px 15px;
-  font-size: 14px;
-  color: #606266;
-  margin-bottom: 0px;
-  border-bottom: 1px solid #f1f1f1;
-  position: relative;
-  z-index: 9;
-  box-shadow: 0px 0px 2px 0px rgba($color: #000000, $alpha: 0.1);
-}
-.drewWrap{
-  height:calc(100% - 60px);
-  overflow-y:auto;
-  background:#f2f2f2;
-}
-.addForm{
-  // margin-bottom: 20px;
-  background:#fff;
-  padding:20px 10px 10px;
-}
-.drawer_but{
-  height: 60px;
-  text-align: right;
-  line-height: 60px;
-  border-top: solid 1px #f1f1f1;
-  padding-right: 20px;
-  position: relative;
-  box-shadow: 2px 2px 2px 2px rgba($color: #000000, $alpha: 0.1);
 }
 .el-select,.el-cascader{
   width: 100%;
