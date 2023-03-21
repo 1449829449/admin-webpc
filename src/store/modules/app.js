@@ -1,8 +1,7 @@
 const appx = {
   namespaced: true,
   state:{
-    opened: false,
-   
+    opened: false
   },
   mutations: {
     SET_OPENED(state) {

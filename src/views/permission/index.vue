@@ -95,7 +95,7 @@
 </template>
 <script>
 import { stemUser, roleList, uploadUser, addUser } from '@/api/systemrun'
-import { Objectbemixed, Objectclear } from '@/utils/tools' // 工具函数库
+import { Objectbemixed } from '@/utils/tools' // 工具函数库
 import tables from '@/mixins/table'
 
 export default {
@@ -148,6 +148,7 @@ export default {
     }
   },
   async mounted(){
+    window.localStorage.setItem('initialdata',JSON.stringify(this.form))
     await this.getList()
     const { data } = await roleList()
     this.selectData = data
@@ -175,7 +176,7 @@ export default {
     adduser(){
       this.stateVal = '1'
       this.dialogFormVisible = true
-      this.form = Objectclear(this.form)
+      this.form = JSON.parse(window.localStorage.getItem('initialdata'))
     },
     closeFn(){
       this.dialogFormVisible = false

@@ -32,3 +32,35 @@ export function addUser(params){
     params
   })
 }
+//角色管理列表
+export function userList(params){
+  return request({
+    url: '/role/page',
+    method:'GET',
+    params
+  })
+}
+//获取菜单列表
+export function userTree(params){
+  return request({
+    url: '/role/allMenuTree',
+    method:'GET',
+    params
+  })
+}
+//添加角色
+export function addRole(params){
+  return request({
+    url:'/role/add',
+    method: 'POST',
+    params
+  })
+}
+//修改角色
+export function uploadRole(params){
+  return request({
+    url:'/role/update',
+    method: 'POST',
+    params
+  })
+}

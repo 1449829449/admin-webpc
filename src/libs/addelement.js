@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { Button, Form, FormItem, Input, Breadcrumb, BreadcrumbItem, Dropdown, DropdownMenu, DropdownItem, Message, Dialog
 , Menu,  MenuItem, Submenu, MenuItemGroup, Scrollbar , Tooltip, pagination, Table , TableColumn , drawer, 
-Radio, RadioGroup, RadioButton, Select, Option, OptionGroup } from 'element-ui';
+Radio, RadioGroup, RadioButton, Select, Option, OptionGroup, Tree } from 'element-ui';
 
 
 
@@ -25,6 +25,9 @@ Vue.use(RadioButton)
 Vue.use(Select)
 Vue.use(Option)
 Vue.use(OptionGroup)
+Vue.use(Tree)
+
+
 
 
 Vue.use(Menu)
