@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { Button, Form, FormItem, Input, Breadcrumb, BreadcrumbItem, Dropdown, DropdownMenu, DropdownItem, Message, Dialog
 , Menu,  MenuItem, Submenu, MenuItemGroup, Scrollbar , Tooltip, pagination, Table , TableColumn , drawer, 
-Radio, RadioGroup, RadioButton, Select, Option, OptionGroup, Tree } from 'element-ui';
+Radio, RadioGroup, RadioButton, Select, Option, OptionGroup, Tree, MessageBox } from 'element-ui';
 
 
 
@@ -47,3 +47,4 @@ Vue.use(drawer)
 
 
 Vue.prototype.$message = Message;
+Vue.prototype.$confirm = MessageBox.confirm;

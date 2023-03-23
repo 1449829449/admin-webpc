@@ -64,3 +64,19 @@ export function uploadRole(params){
     params
   })
 }
+//禁用菜单
+export function delTree(params){
+  return request({
+    url:'/permission/delete',
+    method:'POST',
+    params
+  })
+}
+//添加修改菜单
+export function addTree(name,params){
+  return request({
+    url: `/permission/${name}`,
+    method:'POST',
+    params
+  })
+}
