@@ -41,7 +41,7 @@
         ></el-table-column>
         <el-table-column align="center" label="状态">
           <template slot-scope="scope">
-            {{ scope.row.status == 1 ? '正常' : '禁用' }}
+            {{ scope.row.status == 1 ? "正常" : "禁用" }}
           </template>
         </el-table-column>
       </el-table>
@@ -98,19 +98,19 @@
   </div>
 </template>
 <script>
-import { userList, userTree, addRole, uploadRole } from '@/api/systemrun'
-import tables from '@/mixins/table'
-import { Objectbemixed } from '@/utils/tools' // 工具函数库
+import { userList, userTree, addRole, uploadRole } from "@/api/systemrun";
+import tables from "@/mixins/table";
+import { Objectbemixed } from "@/utils/tools"; // 工具函数库
 
 export default {
-  name: 'rolemanage',
+  name: "rolemanage",
   mixins: [tables],
   props: {},
   data() {
     return {
       //table查询属性
       formInline: {
-        name: '',
+        name: "",
         pageNo: 1,
         pageSize: 10,
       },
@@ -118,77 +118,81 @@ export default {
       rules: {},
       // 操作区
       form: {
-        id: '',
-        name: '',
-        status: '1',
+        id: "",
+        name: "",
+        status: "1",
         permissionId: [],
       },
       rulestree: {
-        name: [{ required: true, message: '请输入角色名称', trigger: 'change' }]
+        name: [
+          { required: true, message: "请输入角色名称", trigger: "change" },
+        ],
       },
       data: [],
       defaultCheck: [],
       defaultProps: {
-        children: 'children',
-        label: 'label',
-        id: 'id',
+        children: "children",
+        label: "label",
+        id: "id",
       },
       currentRow: null,
-    }
+    };
   },
   async mounted() {
-    window.localStorage.setItem('initialdata',JSON.stringify(this.form))
-    await this.getList()
-    const { data } = await userTree()
-    this.data = data.children
+    window.localStorage.setItem("initialdata", JSON.stringify(this.form));
+    await this.getList();
+    const { data } = await userTree();
+    this.data = data.children;
   },
   methods: {
     async getList() {
-      const { data } = await userList(this.formInline)
-      this.tableData = data.records
-      this.total = data.total
+      const { data } = await userList(this.formInline);
+      this.tableData = data.records;
+      this.total = data.total;
     },
     change(one, two) {
-      this.form.permissionId = [...two.checkedKeys, ...two.halfCheckedKeys]
+      this.form.permissionId = [...two.checkedKeys, ...two.halfCheckedKeys];
     },
     handletable(val) {
       this.$refs.tree.setCheckedKeys([]);
-      this.currentRow = val
-      this.defaultCheck = val.permissionId ? val.permissionId.split(',') : []
-      this.form = Objectbemixed(this.form, val)
+      this.currentRow = val;
+      this.defaultCheck = val.permissionId ? val.permissionId.split(",") : [];
+      this.form = Objectbemixed(this.form, val);
     },
     ckback() {
       if (!this.currentRow) {
-        this.$message({ message: '请勾选修改的角色', type: 'warning' })
-        return false
+        this.$message({ message: "请勾选修改的角色", type: "warning" });
+        return false;
       }
-      this.ckadd(1)
+      this.ckadd(1);
     },
     async ckadd(e) {
       this.$refs.formtree.validate(async (valid) => {
-        let res = null
+        let res = null;
         if (valid) {
-          if (typeof this.form.permissionId === 'object') { this.form.permissionId = this.form.permissionId.join(',') }
-          if (e === 1) {
-            this.form.id = this.currentRow.id
-             res = await uploadRole(this.form)
-          } else {
-            this.form.id = ''
-             res = await addRole(this.form)
+          if (typeof this.form.permissionId === "object") {
+            this.form.permissionId = this.form.permissionId.join(",");
           }
-          if (res.code === '200') {
-            this.form = JSON.parse(window.localStorage.getItem('initialdata'))
-            this.currentRow = null
+          if (e === 1) {
+            this.form.id = this.currentRow.id;
+            res = await uploadRole(this.form);
+          } else {
+            this.form.id = "";
+            res = await addRole(this.form);
+          }
+          if (res.code === "200") {
+            this.form = JSON.parse(window.localStorage.getItem("initialdata"));
+            this.currentRow = null;
             this.$refs.tree.setCheckedKeys([]);
             this.$refs.formtree.resetFields();
-            this.getList()
-            this.$message(e === 1 ? '修改成功': '添加成功')
+            this.getList();
+            this.$message(e === 1 ? "修改成功" : "添加成功");
           }
         }
-      })
+      });
     },
   },
-}
+};
 </script>
 <style lang="scss" scoped>
 .rolemanage {

@@ -1,14 +1,10 @@
 <template>
-  <div class="home">
-    首页内容
-
-  </div>
+  <div class="home">首页内容</div>
 </template>
 
 <script>
-
 export default {
-  name: 'Home',
-  mounted() { },
-}
+  name: "Home",
+  mounted() {},
+};
 </script>

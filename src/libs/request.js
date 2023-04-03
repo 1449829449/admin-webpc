@@ -1,7 +1,7 @@
-import axios from 'axios';
-import { Message } from 'element-ui' // 引用element-ui的加载和消息提示组件
-import cookie from 'js-cookie'
-import store from '@/store';
+import axios from "axios";
+import { Message } from "element-ui"; // 引用element-ui的加载和消息提示组件
+import cookie from "js-cookie";
+import store from "@/store";
 
 // 创建 axios 实例
 const request = axios.create({
@@ -15,19 +15,42 @@ const errorHandler = (error) => {
   const { status } = error.response;
   switch (status) {
     /* eslint-disable no-param-reassign */
-    case 400: error.message = '请求错误'; break;
-    case 401: error.message = '未授权，请登录'; break;
-    case 403: error.message = '拒绝访问'; break;
-    case 404: error.message = `请求地址出错: ${error.response.config.url}`; break;
-    case 408: error.message = '请求超时'; break;
-    case 500: error.message = '服务器内部错误'; break;
-    case 501: error.message = '服务未实现'; break;
-    case 502: error.message = '网关错误'; break;
-    case 503: error.message = '服务不可用'; break;
-    case 504: error.message = '网关超时'; break;
-    case 505: error.message = 'HTTP版本不受支持'; break;
-    default: break;
-   /* eslint-disabled */
+    case 400:
+      error.message = "请求错误";
+      break;
+    case 401:
+      error.message = "未授权，请登录";
+      break;
+    case 403:
+      error.message = "拒绝访问";
+      break;
+    case 404:
+      error.message = `请求地址出错: ${error.response.config.url}`;
+      break;
+    case 408:
+      error.message = "请求超时";
+      break;
+    case 500:
+      error.message = "服务器内部错误";
+      break;
+    case 501:
+      error.message = "服务未实现";
+      break;
+    case 502:
+      error.message = "网关错误";
+      break;
+    case 503:
+      error.message = "服务不可用";
+      break;
+    case 504:
+      error.message = "网关超时";
+      break;
+    case 505:
+      error.message = "HTTP版本不受支持";
+      break;
+    default:
+      break;
+    /* eslint-disabled */
   }
   return Promise.reject(error);
 };
@@ -37,8 +60,8 @@ request.interceptors.request.use((config) => {
   // 如果 token 存在
   // 让每个请求携带自定义 token 请根据实际情况自行修改
   // eslint-disable-next-line no-param-reassign
-  config.headers['Authorization-token'] = `${cookie.get('token')}`;
-  config.headers['user_id'] = `${cookie.get('user_id')}`;
+  config.headers["Authorization-token"] = `${cookie.get("token")}`;
+  config.headers["user_id"] = `${cookie.get("user_id")}`;
   return config;
 }, errorHandler);
 
@@ -55,15 +78,15 @@ request.interceptors.response.use((response) => {
   } else {
     // 有 code 代表这是一个后端接口 可以进行进一步的判断
     switch (code) {
-      case '200':
+      case "200":
         // [ 示例 ] code === 200 代表没有错误
         return dataAxios;
-      case '403':
-        store.dispatch('login/logOut')
+      case "403":
+        store.dispatch("login/logOut");
         // [ 示例 ] 其它和后台约定的 code
-        return 'xxx';
+        return "xxx";
       default:
-        Message.error(dataAxios.message)
+        Message.error(dataAxios.message);
         // 不是正确的 code
         return dataAxios;
     }

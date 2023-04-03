@@ -24,7 +24,7 @@ export default [
     name: "About",
     component: () => import("@/views/About.vue"),
     meta: {
-      title: "参保查询"
+      title: "参保查询",
     },
   },
   // {
@@ -53,9 +53,9 @@ export default [
   //   ]
   // },
   {
-    path: '*',
-    name: '404',
+    path: "*",
+    name: "404",
     hidden: true,
-    component:() => import('@/views/error/index.vue')
-  }
+    component: () => import("@/views/error/index.vue"),
+  },
 ];

@@ -2,8 +2,8 @@
   <div class="nav_header">
     <div class="headr_d1">
       <!-- 展开按钮 -->
-      <div  @click="ckdevelop"><svg-icon icon-class="zhankai"></svg-icon></div>
-      
+      <div @click="ckdevelop"><svg-icon icon-class="zhankai"></svg-icon></div>
+
       <!-- 面包屑导航 -->
       <el-breadcrumb separator="/">
         <el-breadcrumb-item v-for="(item, index) in breadList" :key="index">
@@ -21,7 +21,8 @@
         <li class="domPersonal">
           <el-dropdown @command="handleCommand" placement="bottom-end">
             <div class="el-dropdown-link">
-              <span>{{ name }}</span> <img src="@/assets/framework/logo.png" alt="用户头像" />
+              <span>{{ name }}</span>
+              <img src="@/assets/framework/logo.png" alt="用户头像" />
             </div>
 
             <el-dropdown-menu slot="dropdown">
@@ -64,76 +65,76 @@
   </div>
 </template>
 <script>
-import screenfull from 'screenfull'
-import cookie from 'js-cookie'
+import screenfull from "screenfull";
+import cookie from "js-cookie";
 
 export default {
   data() {
     return {
-      name: cookie.get('ms_name'),
+      name: cookie.get("ms_name"),
       dialogFormVisible: false,
       breadList: [],
       opened: false,
       ruleForm: {
-        oldPass: '',
-        newPass: '',
-        passTwo: '',
+        oldPass: "",
+        newPass: "",
+        passTwo: "",
       },
       rules: {
         oldPass: [
-          { required: true, message: '原密码', trigger: 'blur' },
+          { required: true, message: "原密码", trigger: "blur" },
           // { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
         ],
-        newPass: [{ required: true, message: '新密码', trigger: 'blur' }],
-        passTwo: [{ required: true, message: '确认密码', trigger: 'blur' }],
+        newPass: [{ required: true, message: "新密码", trigger: "blur" }],
+        passTwo: [{ required: true, message: "确认密码", trigger: "blur" }],
       },
-    }
+    };
   },
   watch: {
     $route: {
-      handler(route){
-        let allList = route.matched.filter( item =>{
-          if(item.meta.title){
-            return true
+      handler(route) {
+        let allList = route.matched.filter((item) => {
+          if (item.meta.title) {
+            return true;
           }
-        })
-        this.breadList = allList
+        });
+        this.breadList = allList;
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   methods: {
-    ckdevelop(){
-      this.$store.commit('app/SET_OPENED')
+    ckdevelop() {
+      this.$store.commit("app/SET_OPENED");
     },
     toggleFull() {
-      screenfull.toggle()
+      screenfull.toggle();
     },
     handleCommand(command) {
       switch (command) {
-        case '1':
-          this.dialogFormVisible = true
-          break
+        case "1":
+          this.dialogFormVisible = true;
+          break;
         default:
-          this.$store.dispatch(command)
+          this.$store.dispatch(command);
       }
     },
     doSubmit() {
       this.$refs.ruleForm.validate(async (valid) => {
         if (valid) {
-          this.ruleForm.name = window.localStorage.getItem('name')
-          let { passTwo, ...all } = this.ruleForm
-          console.log(passTwo)
-          this.$store.dispatch('login/czCode', all)
-          this.dialogFormVisible = false
+          this.ruleForm.name = window.localStorage.getItem("name");
+          let { passTwo, ...all } = this.ruleForm;
+          console.log(passTwo);
+          this.$store.dispatch("login/czCode", all);
+          this.dialogFormVisible = false;
         }
-      })
+      });
     },
     handleClose() {
-      this.$refs.ruleForm.resetFields()
+      this.$refs.ruleForm.resetFields();
     },
   },
-}
+};
 </script>
 <style lang="scss">
 #nav {
@@ -190,7 +191,7 @@ export default {
         background-color: #f6f6f6;
       }
       span::after {
-        content: '';
+        content: "";
         width: 0px;
         height: 0px;
         font-size: 0px;

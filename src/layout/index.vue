@@ -6,40 +6,41 @@
   </div>
 </template>
 <script>
-import MHeader from "@/layout/components/header.vue"
-import SideBar from "@/layout/components/sideBar.vue"
-import PageMain from "@/layout/components/PageMain.vue"
-import { mapState } from 'vuex'
+import MHeader from "@/layout/components/header.vue";
+import SideBar from "@/layout/components/sideBar.vue";
+import PageMain from "@/layout/components/PageMain.vue";
+import { mapState } from "vuex";
 
 export default {
-  name: 'layout',
-  components:{
+  name: "layout",
+  components: {
     MHeader,
     SideBar,
-    PageMain
+    PageMain,
   },
   computed: {
-    ...mapState('app', ['opened']),
+    ...mapState("app", ["opened"]),
   },
-}
-
+};
 </script>
 <style lang="scss">
-.closeBar{
-  .nav_header{
+.closeBar {
+  .nav_header {
     width: calc(100% - 105px);
     margin-left: 65px;
   }
-  .sideBar{
+  .sideBar {
     width: 65px;
   }
-  .header_l span{
+  .header_l span {
     display: none;
   }
-  .app_main{ 
+  .app_main {
     width: calc(100% - 90px);
     margin-left: 60px;
-   }
-  .el-submenu__title span{ display: none;}
+  }
+  .el-submenu__title span {
+    display: none;
+  }
 }
 </style>

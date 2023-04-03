@@ -6,7 +6,7 @@
   </section>
 </template>
 <style lang="scss" scoped>
-.app_main{
+.app_main {
   padding: 15px;
   width: calc(100% - 230px);
   background-color: #f0f3f4;

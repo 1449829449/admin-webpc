@@ -1,7 +1,8 @@
 <template>
   <div class="sideBar" id="domSideBar">
     <div class="header_l">
-      <img src="@/assets/framework/logo.png" alt="基础架构" /> <span>基础架构</span>
+      <img src="@/assets/framework/logo.png" alt="基础架构" />
+      <span>基础架构</span>
     </div>
     <el-scrollbar>
       <el-menu
@@ -47,48 +48,45 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 
 export default {
   data() {
     return {
       isCollapse: false,
       list: {},
-    }
+    };
   },
   computed: {
-    ...mapState('app', ['opened']),
-    ...mapState('login', ['addRoutes']),
+    ...mapState("app", ["opened"]),
+    ...mapState("login", ["addRoutes"]),
     activeMenu() {
-      const { path } = this.$route
-      return path
+      const { path } = this.$route;
+      return path;
     },
   },
   mounted() {
     // console.log(this.addRoutes,'=====55555555')
-    this.list = this.deepFilter(this.addRoutes)
-  
+    this.list = this.deepFilter(this.addRoutes);
   },
   methods: {
     ckpath(a, b) {
-      return a + b
+      return a + b;
     },
     deepFilter(list) {
       // 使用filter 过滤当前层的数组
-      return list.filter(item => {
-          // filter其实也是遍历
-          // 把当前遍历的节点的children 也调用一次 deepFilter 函数，返回过滤后的数组重新赋值
-          if(item.children){
-            item.children = this.deepFilter(item.children)
-          }
-          // 最后判断当前节点是否符合过滤要求
-          return !item.hidden
-      })
-    }
+      return list.filter((item) => {
+        // filter其实也是遍历
+        // 把当前遍历的节点的children 也调用一次 deepFilter 函数，返回过滤后的数组重新赋值
+        if (item.children) {
+          item.children = this.deepFilter(item.children);
+        }
+        // 最后判断当前节点是否符合过滤要求
+        return !item.hidden;
+      });
+    },
   },
-}
-
-
+};
 </script>
 <style lang="scss" scoped>
 .sideBar {

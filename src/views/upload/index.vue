@@ -1,23 +1,20 @@
 <template>
-  <div class="upload">
-    upload组件
-  </div>
+  <div class="upload">upload组件</div>
 </template>
 <script>
 export default {
-  name: 'upload',
+  name: "upload",
   props: {},
-  data () {
+  data() {
     return {
-      name: 'upload'
-    }
+      name: "upload",
+    };
   },
-  mounted () {},
-  methods: {}
-}
+  mounted() {},
+  methods: {},
+};
 </script>
 <style lang="scss" scoped>
 .upload {
-
 }
 </style>

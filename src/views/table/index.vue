@@ -1,20 +1,17 @@
 <template>
-  <div class="table">
-    table组件
-  </div>
+  <div class="table">table组件</div>
 </template>
 <script>
 export default {
-  name: 'table',
+  name: "table",
   props: {},
-  data () {
+  data() {
     return {
-      name: 'table'
-    }
+      name: "table",
+    };
   },
-  mounted () {},
-  methods: {}
-}
+  mounted() {},
+  methods: {},
+};
 </script>
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
