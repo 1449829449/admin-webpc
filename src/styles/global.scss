@@ -42,14 +42,20 @@ menu,
 nav,
 section,
 time,
-video { margin: 0; padding: 0; }
+video {
+  margin: 0;
+  padding: 0;
+}
 
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 { font-weight: normal; font-size: 100% }
+h6 {
+  font-weight: normal;
+  font-size: 100%;
+}
 
 article,
 aside,
@@ -60,40 +66,81 @@ header,
 hgroup,
 nav,
 section,
-blockquote { display: block; }
+blockquote {
+  display: block;
+}
 
 ul,
-ol { list-style: none; }
+ol {
+  list-style: none;
+}
 
-img { vertical-align: top; border: 0 none; }
+img {
+  vertical-align: top;
+  border: 0 none;
+}
 
 blockquote,
-q { quotes: none; }
+q {
+  quotes: none;
+}
 
 blockquote::before,
 blockquote::after,
 q::before,
-q::after { content: none; }
+q::after {
+  content: none;
+}
 
-table { border-collapse: collapse; border-spacing: 0; }
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
 
 strong,
 em,
-i { font-weight: normal; font-style: normal; }
+i {
+  font-weight: normal;
+  font-style: normal;
+}
 
-ins { text-decoration: underline; }
+ins {
+  text-decoration: underline;
+}
 
-del { text-decoration: line-through; }
+del {
+  text-decoration: line-through;
+}
 
-mark { background: none; }
+mark {
+  background: none;
+}
 
-input::-ms-clear { display: none !important; }
+input::-ms-clear {
+  display: none !important;
+}
 
-body { font: 12px/1.5 "\5FAE\8F6F\96C5\9ED1", "\5B8B\4F53", "Hiragino Sans GB", STHeiti, "WenQuanYi Micro Hei", "Droid Sans Fallback", SimSun, sans-serif; background: #fff; }
+body {
+  font:
+    12px/1.5 '\5FAE\8F6F\96C5\9ED1',
+    '\5B8B\4F53',
+    'Hiragino Sans GB',
+    STHeiti,
+    'WenQuanYi Micro Hei',
+    'Droid Sans Fallback',
+    SimSun,
+    sans-serif;
+  background: #fff;
+}
 
-a { color: #333; text-decoration: none; }
+a {
+  color: #333;
+  text-decoration: none;
+}
 
-a:hover { text-decoration: underline; }
+a:hover {
+  text-decoration: underline;
+}
 
 ::-webkit-scrollbar {
   width: 6px;
