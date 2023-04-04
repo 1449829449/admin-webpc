@@ -45,7 +45,7 @@
     <el-drawer
       class="addCont"
       size="50%"
-      style="padding: 0 10px"
+      style="padding: 0 10px;"
       :wrapper-closable="false"
       :title="stateVal + '菜单'"
       @close="resetForm('drawerform')"

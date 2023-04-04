@@ -143,7 +143,7 @@ export default {
   a {
     color: #2c3e50;
     font-weight: bold;
-    background-color: #f6f6f6;
+    background-color: #fff;
 
     &.router-link-exact-active {
       color: #42b983;
@@ -160,7 +160,7 @@ export default {
   height: 50px;
   margin-left: 200px;
   padding: 0 20px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05%);
 
   .svg-icon {
     margin: 1px 10px 0 0;

@@ -80,7 +80,7 @@
     <el-drawer
       class="addCont"
       size="50%"
-      style="padding: 0 10px"
+      style="padding: 0 10px;"
       :wrapper-closable="false"
       :title="stateVal === '0' ? '修改' : '添加'"
       @close="resetForm('drawerform')"

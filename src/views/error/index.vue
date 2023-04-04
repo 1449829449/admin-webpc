@@ -49,7 +49,7 @@ export default {
 
 .error_main {
   width: 520px;
-  padding: 50px 50px 70px 50px;
+  padding: 50px 50px 70px;
   background-color: #f9f9f9;
 
   h3 {
