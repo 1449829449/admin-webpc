@@ -90,29 +90,33 @@ export default {
 </script>
 <style lang="scss" scoped>
 .sideBar {
-  width: 200px;
   position: fixed;
   top: 0;
   left: 0;
+  width: 200px;
   height: 100%;
-  background-color: #3a3f51;
   overflow: hidden;
+  background-color: #3a3f51;
+
   .el-scrollbar {
     height: calc(100% - 55px);
   }
+
   .el-menu {
-    border: none;
     text-align: left;
+    border: none;
   }
+
   .header_l {
     display: flex;
     align-items: center;
-    color: #fff;
     height: 50px;
     padding-left: 15px;
-    font-size: 14px;
+    color: #fff;
     font-weight: bold;
+    font-size: 14px;
     border-bottom: 1px solid #454b61;
+
     img {
       width: 30px;
       height: 30px;

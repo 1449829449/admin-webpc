@@ -141,9 +141,10 @@ export default {
   padding: 30px;
 
   a {
-    font-weight: bold;
     color: #2c3e50;
+    font-weight: bold;
     background-color: #f6f6f6;
+
     &.router-link-exact-active {
       color: #42b983;
     }
@@ -151,60 +152,70 @@ export default {
 }
 
 .nav_header {
-  width: calc(100% - 240px);
-  margin-left: 200px;
-  height: 50px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
+  width: calc(100% - 240px);
+  height: 50px;
+  margin-left: 200px;
   padding: 0 20px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+
   .svg-icon {
-    cursor: pointer;
     margin: 1px 10px 0 0;
+    cursor: pointer;
   }
+
   .headr_d1 {
     display: flex;
   }
+
   .el-breadcrumb {
     line-height: initial;
   }
+
   .headr_d2 {
     img {
       width: 38px;
       height: 38px;
       border-radius: 50%;
     }
+
     ul {
       display: flex;
       align-items: center;
     }
+
     .domPersonal {
-      font-size: 14px;
       display: flex;
       align-items: center;
-      cursor: pointer;
       height: 50px;
       padding: 0 10px;
+      font-size: 14px;
+      cursor: pointer;
+
       &:hover {
         background-color: #f6f6f6;
       }
+
       span::after {
-        content: "";
-        width: 0px;
-        height: 0px;
-        font-size: 0px;
+        width: 0;
+        height: 0;
+        margin: 0 5px;
+        font-size: 0;
         border-top: solid 6px #606266;
-        border-left: solid 6px transparent;
         border-right: solid 6px transparent;
         border-bottom: solid 6px transparent;
-        margin: 0 5px;
+        border-left: solid 6px transparent;
+        content: "";
       }
     }
+
     .domFullScreen {
       line-height: normal;
     }
+
     .el-dropdown-link {
       display: flex;
       align-items: center;

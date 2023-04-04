@@ -199,36 +199,44 @@ export default {
   display: flex;
   justify-content: space-between;
 }
+
 .el-select,
 .el-cascader {
   width: 100%;
 }
+
 .el-select-dropdown__item {
   padding-left: 20px;
 }
+
 .wleft {
   width: 68%;
-  border-radius: 2px;
   padding: 20px;
   background-color: #fff;
+  border-radius: 2px;
 }
+
 .wright {
   width: 32%;
-  border-radius: 2px;
-  padding: 20px;
   margin-left: 10px;
+  padding: 20px;
   background-color: #fff;
+  border-radius: 2px;
+
   .el-form {
     height: 76vh;
     overflow-x: auto;
   }
+
   .el-form-item {
     padding: 5px 0;
   }
+
   .qxlh /deep/.el-form-item__label {
     line-height: inherit;
   }
 }
+
 .tree_but {
   padding-top: 10px;
   border-top: solid 1px #ddd;

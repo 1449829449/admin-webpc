@@ -39,39 +39,46 @@ export default {
 </script>
 <style lang="scss" scoped>
 .error_404 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: #f0f1f3;
 }
+
 .error_main {
   width: 520px;
   padding: 50px 50px 70px 50px;
   background-color: #f9f9f9;
+
   h3 {
     font-size: 24px;
     text-align: left;
     border-bottom: 1px solid #d0d0d0;
+
     strong {
-      font-size: 54px;
       margin-right: 20px;
+      font-size: 54px;
     }
   }
+
   .error_actions {
     display: flex;
     justify-content: space-around;
-    text-align: left;
     padding-top: 20px;
     font-size: 14px;
+    text-align: left;
+
     > div {
       width: 46%;
     }
+
     h4 {
-      font-size: 20px;
       margin-bottom: 10px;
+      font-size: 20px;
     }
+
     li {
       color: #838383;
       line-height: 30px;

@@ -246,20 +246,24 @@ export default {
 </script>
 <style lang="scss" scoped>
 .rolemanage {
+  padding: 20px;
   background: #fff;
   border-radius: 2px;
-  padding: 20px;
 }
+
 .el-select,
 .el-cascader {
   width: 100%;
 }
+
 .el-select-dropdown__item {
   padding-left: 20px;
 }
+
 .drawer_form {
   padding: 20px 30px 20px 20px;
   background-color: #fff;
+
   .el-form-item {
     padding: 10px 0;
   }

@@ -72,60 +72,68 @@ export default {
 </script>
 <style lang="scss" scoped>
 .header {
-  width: 100%;
-  height: 90px;
   display: flex;
   align-items: center;
   justify-content: left;
-  background-color: #f5f5f5;
-  font-size: 36px;
-  font-weight: 500;
+  width: 100%;
+  height: 90px;
   color: #3880e7;
+  font-weight: 500;
+  font-size: 36px;
+  background-color: #f5f5f5;
+
   img {
     width: 60px;
     height: 60px;
     margin: 0 10px 0 90px;
   }
 }
+
 .login_center {
-  height: calc(100vh - 190px);
   display: flex;
   align-items: center;
   justify-content: space-around;
+  height: calc(100vh - 190px);
   background-color: #1264d9;
 
   img {
     height: 60%;
   }
+
   .login_form {
     width: 380px;
     background-color: #fff;
     border-radius: 6px;
     box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.1);
+
     h3 {
       width: 100%;
+      color: #333;
+      font-size: 18px;
       line-height: 50px;
       text-align: center;
-      font-size: 18px;
-      color: #333;
       border-bottom: solid 1px #ddd;
     }
   }
+
   .login-ruleForm {
     margin: 30px;
+
     .el-form-item {
       margin-bottom: 20px;
     }
   }
+
   .login_but {
     width: 100%;
   }
 }
+
 .footer {
   width: 100%;
   height: 100px;
-  line-height: 100px;
   color: #626262;
   font-size: 16px;
+  line-height: 100px;
 }
 </style>

@@ -14,7 +14,4 @@ export default {
   methods: {},
 };
 </script>
-<style lang="scss" scoped>
-.upload {
-}
-</style>
+<style lang="scss" scoped></style>
