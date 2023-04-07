@@ -211,10 +211,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 .jurisdiction {
-  width: auto;
-  padding: 20px;
   background: #fff;
   border-radius: 2px;
+  padding: 20px;
 }
 
 .drawer_form {
