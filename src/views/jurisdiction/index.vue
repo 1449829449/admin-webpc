@@ -214,6 +214,7 @@ export default {
   padding: 20px;
   background: #fff;
   border-radius: 2px;
+  width: auto;
 }
 
 .drawer_form {
