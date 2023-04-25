@@ -35,7 +35,7 @@
     "vuex": "^3.4.0"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^3.0.0",
+    "@fullhuman/postcss-purgecss": "~3.0.0",
     "@vue/cli-plugin-babel": "~4.5.13",
     "@vue/cli-plugin-eslint": "~4.5.13",
     "@vue/cli-plugin-router": "~4.5.13",
@@ -55,6 +55,8 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-declaration-block-no-ignored-properties": "^2.7.0",
     "stylelint-order": "^4.1.0",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.3.1"
   }
 }
