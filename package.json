@@ -11,7 +11,8 @@
     "lint": "vue-cli-service lint && stylelint **/*.{vue,css,scss}  --fix",
     "release": "standard-version",
     "commit": "cz",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "docs": "jsdoc -c jsdoc.json"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,vue}": [
@@ -56,11 +57,13 @@
     "commitlint": "^17.6.1",
     "compression-webpack-plugin": "^6.1.1",
     "cz-customizable": "^7.0.0",
+    "docdash": "^2.0.2",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
     "husky": "^8.0.3",
     "image-webpack-loader": "^8.1.0",
+    "jsdoc": "^4.0.2",
     "lint-staged": "^13.2.1",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",

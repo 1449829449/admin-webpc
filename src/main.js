@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
 import "./libs/addelement";
 // 在main.js引入图标
 import "./icons";
@@ -16,11 +16,11 @@ Object.keys(filters).forEach((key) => {
   Vue.filter(key, filters[key]);
 });
 
-Vue.config.productionTip = false
-process.env.VUE_APP_ENV !== 'prod' && require('../mock')
+Vue.config.productionTip = false;
+process.env.VUE_APP_ENV !== "prod" && require("../mock");
 
 new Vue({
   router,
   store,
-  render: h => h(App)
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount("#app");
